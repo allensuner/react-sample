@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import axios from 'axios'
+// import logo from './logo.svg';
+// import axios from 'axios'
 import './App.css';
 import pokemen from './pokemen';
 import Pokemon from './Pokemon';
@@ -35,9 +35,13 @@ class App extends Component {
 
     return (
       <div className="App">
-        {/* <Pokemon mon={pokemon[0]} /> */}
-        {/* map over the mons, and for each display a <Pokemon /> */}
-        
+        {
+          pokemon.map(pokemon => {
+            return (
+              <Pokemon key = {pokemon.name} mon = {pokemon} />
+            )
+          })
+        }
       </div>
     );
   }

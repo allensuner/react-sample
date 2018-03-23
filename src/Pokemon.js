@@ -22,10 +22,9 @@ import React, { Component } from 'react';
 // ];
 
 class Pokemon extends Component {
-  constructor(props){
-    super(props)
-  }
-
+  // constructor(props){
+  //   super(props)
+  // }
   render(){
     const { mon } = this.props;
     return (
