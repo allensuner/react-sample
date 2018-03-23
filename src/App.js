@@ -14,6 +14,7 @@ class App extends Component {
       pokemon: null,
       showForm: false
     };
+    this.addPokemon = this.addPokemon.bind(this);
   }
 
   componentDidMount() {
@@ -28,6 +29,10 @@ class App extends Component {
     //   });
   }
 
+  addPokemon(newPokemon) {
+    this.setState({ pokemon: [...this.state.pokemon, newPokemon] });
+  }
+
   render() {
     const { pokemon } = this.state;
     
@@ -40,7 +45,7 @@ class App extends Component {
         <PokemonTable pokemon = {pokemon} />
         {
           this.state.showForm &&
-          <PokemonForm />
+          <PokemonForm addPokemon = {this.addPokemon} />
         }
         <button onClick={() => this.setState({ showForm: !this.state.showForm })}>
           Add
