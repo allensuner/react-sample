@@ -9,6 +9,7 @@ class Pokemon extends Component {
         <td>{mon.name}</td>
         <td>{mon.type}</td>
         <td><img src = {mon.image} alt = {mon.name}/></td>
+        <td><button onClick = {() => this.props.toggleShowForm()}>Edit</button></td>
       </tr>
     )
   }

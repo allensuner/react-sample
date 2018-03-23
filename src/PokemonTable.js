@@ -3,7 +3,7 @@ import Pokemon from './Pokemon';
 
 class PokemonTable extends Component {
     render() {
-        const { pokemon } = this.props;        
+        const { pokemons } = this.props;        
         return (
             <table>
                 <thead>
@@ -17,9 +17,9 @@ class PokemonTable extends Component {
                 </thead>    
                 <tbody>            
                     {
-                        pokemon.map(pokemon => {
+                        pokemons.map(pokemon => {
                             return (
-                                <Pokemon key = {pokemon.name} mon = {pokemon} />
+                                <Pokemon key = {pokemon.name} mon = {pokemon} toggleShowForm = {this.props.toggleShowForm} />
                             )
                         })
                     }

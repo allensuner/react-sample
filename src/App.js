@@ -11,18 +11,19 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pokemon: null,
+      pokemons: null,
       showForm: false
     };
     this.addPokemon = this.addPokemon.bind(this);
+    this.toggleShowForm = this.toggleShowForm.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ pokemon: pokemen });
+    this.setState({ pokemons: pokemen });
     // fetch items list(s)
-    // axios.get('https://pokeapi.co/api/v2/pokemon/')
+    // axios.get('https://pokeapi.co/api/v2/pokemons/')
     //   .then((data) => {
-    //     this.setState({ pokemon: data.data.results });        
+    //     this.setState({ pokemons: data.data.results });        
     //   })
     //   .catch((error) => {
     //     console.log(`Something broke! ${error}`);
@@ -30,24 +31,28 @@ class App extends Component {
   }
 
   addPokemon(newPokemon) {
-    this.setState({ pokemon: [...this.state.pokemon, newPokemon] });
+    this.setState({ pokemons: [...this.state.pokemons, newPokemon] });
+  }
+
+  toggleShowForm() {
+    this.setState({ showForm: !this.state.showForm });
   }
 
   render() {
-    const { pokemon } = this.state;
+    const { pokemons } = this.state;
     
-    if (!pokemon){
+    if (!pokemons){
       return <h1>Loading...</h1>
     }
 
     return (
       <div className="App">
-        <PokemonTable pokemon = {pokemon} />
+        <PokemonTable pokemons = {pokemons} toggleShowForm = {this.toggleShowForm} />
         {
           this.state.showForm &&
           <PokemonForm addPokemon = {this.addPokemon} />
         }
-        <button onClick={() => this.setState({ showForm: !this.state.showForm })}>
+        <button onClick={() => this.toggleShowForm()}>
           Add
         </button>
       </div>
