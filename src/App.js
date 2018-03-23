@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import axios from 'axios'
 import './App.css';
 import pokemen from './pokemen';
+import Pokemon from './Pokemon';
 
 class App extends Component {
 
@@ -26,9 +27,16 @@ class App extends Component {
   }
 
   render() {
-    const pokemon = this.state.pokemon;
+    const { pokemon } = this.state;
+    
+    if (!pokemon){
+      return <h1>Loading...</h1>
+    }
+
     return (
       <div className="App">
+        {/* <Pokemon mon={pokemon[0]} /> */}
+        {/* map over the mons, and for each display a <Pokemon /> */}
         
       </div>
     );
