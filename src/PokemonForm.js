@@ -7,17 +7,21 @@ class PokemonForm extends Component {
             number: '',
             name: '',
             type: '',
-            image: ''            
+            image: ''
         };
     
-        this.handleChange = this.handleChange.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
     
-      handleChange(event) {
-          console.log(JSON.stringify(event, null, 2));
-          console.log(JSON.stringify(event.target, null, 2));
-        // this.setState({ name: event.target.name });
+      handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        });
       }
     
       handleSubmit(event) {
@@ -30,22 +34,22 @@ class PokemonForm extends Component {
           <form onSubmit={this.handleSubmit}>
             <div>
                 <label>
-                Number:<input type="text" value={this.state.number} name="number" onChange={this.handleChange} />
+                Number:<input type="text" value={this.state.number} name="number" onChange={this.handleInputChange} />
                 </label>
             </div>
             <div>            
                 <label>
-                Name:<input type="text" value={this.state.name} name="name" onChange={this.handleChange} />
+                Name:<input type="text" value={this.state.name} name="name" onChange={this.handleInputChange} />
                 </label>
             </div> 
             <div>     
                 <label>
-                Type:<input type="text" value={this.state.type} name="type" onChange={this.handleChange} />
+                Type:<input type="text" value={this.state.type} name="type" onChange={this.handleInputChange} />
                 </label>
             </div>
             <div>
                 <label>
-                Image:<input type="text" value={this.state.image} name="image" onChange={this.handleChange} />
+                Image:<input type="text" value={this.state.image} name="image" onChange={this.handleInputChange} />
                 </label>
             </div>
             <input type="submit" value="Submit" />
