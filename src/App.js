@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import axios from 'axios'
 import './App.css';
 import pokemen from './pokemen';
-import Pokemon from './Pokemon';
+import PokemonTable from './PokemonTable';
 
 class App extends Component {
 
@@ -35,13 +35,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        {
-          pokemon.map(pokemon => {
-            return (
-              <Pokemon key = {pokemon.name} mon = {pokemon} />
-            )
-          })
-        }
+        <PokemonTable pokemon = {pokemon} />
       </div>
     );
   }
