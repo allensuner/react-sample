@@ -4,13 +4,15 @@ import React, { Component } from 'react';
 import './App.css';
 import pokemen from './pokemen';
 import PokemonTable from './PokemonTable';
+import PokemonForm from './PokemonForm';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      pokemon: null
+      pokemon: null,
+      showForm: false
     };
   }
 
@@ -36,6 +38,13 @@ class App extends Component {
     return (
       <div className="App">
         <PokemonTable pokemon = {pokemon} />
+        {
+          this.state.showForm &&
+          <PokemonForm />
+        }
+        <button onClick={() => this.setState({ showForm: !this.state.showForm })}>
+          Add
+        </button>
       </div>
     );
   }

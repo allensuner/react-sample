@@ -5,10 +5,10 @@ class Pokemon extends Component {
     const { mon } = this.props;
     return (
       <tr>
+        <td>{mon.number}</td>
         <td>{mon.name}</td>
         <td>{mon.type}</td>
-        <td>{mon.number}</td>
-        <td>todo: image: {mon.image}</td>
+        <td><img src = {mon.image} alt = {mon.name}/></td>
       </tr>
     )
   }
