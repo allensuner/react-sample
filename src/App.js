@@ -12,7 +12,8 @@ class App extends Component {
     super(props);
     this.state = {
       pokemons: null,
-      showForm: false
+      showForm: false,
+      monToEdit: null
     };
     this.addPokemon = this.addPokemon.bind(this);
     this.toggleShowForm = this.toggleShowForm.bind(this);
@@ -34,8 +35,13 @@ class App extends Component {
     this.setState({ pokemons: [...this.state.pokemons, newPokemon] });
   }
 
-  toggleShowForm() {
-    this.setState({ showForm: !this.state.showForm });
+  toggleShowForm(monToEdit) {
+    this.setState((prevState, props) => { 
+      return { 
+        showForm: !this.state.showForm ,
+        monToEdit: monToEdit
+      }
+    });
   }
 
   render() {
@@ -50,7 +56,7 @@ class App extends Component {
         <PokemonTable pokemons = {pokemons} toggleShowForm = {this.toggleShowForm} />
         {
           this.state.showForm &&
-          <PokemonForm addPokemon = {this.addPokemon} />
+          <PokemonForm addPokemon = {this.addPokemon} monToEdit = {this.state.monToEdit} />
         }
         <button onClick={() => this.toggleShowForm()}>
           Add

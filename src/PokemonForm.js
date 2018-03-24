@@ -3,13 +3,23 @@ import React, { Component } from 'react';
 class PokemonForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            number: '',
-            name: '',
-            type: '',
-            image: ''
-        };
-        
+        const { monToEdit } = this.props;
+        if (monToEdit) {
+            this.state = { 
+                number: monToEdit.number,
+                name: monToEdit.name,
+                type: monToEdit.type,
+                image: monToEdit.image
+            };
+        } else {
+            this.state = { 
+                number: '',
+                name: '',
+                type: '',
+                image: ''
+            };
+        }
+
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
