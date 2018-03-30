@@ -17,9 +17,9 @@ class PokemonTable extends Component {
                 </thead>    
                 <tbody>            
                     {
-                        pokemons.map(pokemon => {
+                        Object.keys(pokemons).map(num => {
                             return (
-                                <Pokemon key = {pokemon.name} mon = {pokemon} toggleShowForm = {this.props.toggleShowForm} />
+                                <Pokemon key = {num} mon = {pokemons[num]} toggleShowForm = {this.props.toggleShowForm} />
                             )
                         })
                     }

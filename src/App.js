@@ -32,7 +32,9 @@ class App extends Component {
   }
 
   addPokemon(newPokemon) {
-    this.setState({ pokemons: [...this.state.pokemons, newPokemon] });
+    let collection = this.state.pokemons;
+    collection[newPokemon.number] = newPokemon;
+    this.setState({ pokemons: collection });
   }
 
   toggleShowForm(monToEdit) {
